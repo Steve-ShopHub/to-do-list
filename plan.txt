@@ -1,0 +1,59 @@
+Set-up webpack
+
+Add external npm libraries
+    - date-fns
+
+
+Structure
+
+
+To-do item properties:
+
+    - Title
+    - Description
+    - dueDate
+    - priority
+    - notes
+    - checklist
+    - List category
+
+
+Project properties
+    - Name
+    - Position?*
+    - 
+
+Project lists
+
+    - To do (default)
+    - Doing
+    - Done
+
+    Users need to be able to choose
+
+
+Set up save & load functions
+    Function save
+        - Save projects and to-dos to local storage whenever a new project or to-do is created
+
+    Function load
+        - looks for that data in localStorage when your app is first loaded.
+
+    Make sure your app doesn’t crash if the data you may want retrieve from localStorage isn’t there!
+
+
+
+
+Separate application logic (creating new to-do's, setting to-do's as complete etc) SEPARATE from DOM-related stuff
+
+            **Keep all these things in separate modules**
+
+
+UI
+    - view all projects
+
+    - view all todos in each project (probably just the title and duedate… perhaps changing color for different priorities)
+
+    - expand a single todo to see/edit its details
+
+    - delete a todo
