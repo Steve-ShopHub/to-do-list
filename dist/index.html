@@ -11,16 +11,19 @@
     <div id="content">
       <fieldset>
         <legend>Create new project</legend>
-        <input
-          id="proj-name-input"
-          type="text"
-          placeholder="Enter project name"
-          name="project"
-        />
+        <form>
+          <input
+            id="proj-name-input"
+            type="text"
+            placeholder="Enter project name"
+            name="project"
+            required
+          />
 
-        <button id="proj-name-submit" name="project" type="submit">
-          Create New Project
-        </button>
+          <button id="proj-name-submit" name="project" type="submit">
+            Create New Project
+          </button>
+        </form>
       </fieldset>
 
       <div id="projects-holder">

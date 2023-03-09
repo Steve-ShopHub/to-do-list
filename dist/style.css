@@ -16,7 +16,7 @@ html {
 #projects-holder {
     display: flex;
     overflow-x: auto;
-    max-width: 800px;
+    max-width: 80vw;
 }
 
 

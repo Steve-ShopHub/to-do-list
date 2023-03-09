@@ -4,9 +4,9 @@ console.log(localStorage);
 
 (function loadData() {
   const objDeserialized = JSON.parse(localStorage.getItem("Projects"));
-  // if (objDeserialized !== null) {
-  //  projectHolder = objDeserialized;
-  // }
+  if (objDeserialized !== null) {
+    projectHolder = objDeserialized;
+  }
   console.log(objDeserialized);
 })();
 
@@ -60,22 +60,38 @@ const createProjectBtn = document.querySelector("#proj-name-submit");
 
 const appendProjects = function () {
   projectHolder.forEach((project, index) => {
-    const newProject = document.createElement("div");
-    // projectsContainer.removeChild(newProject);
-    newProject.dataset.key = index;
-    newProject.classList.add("project");
-    newProject.textContent = project.title;
-    projectsContainer.appendChild(newProject);
+    if (document.getElementById(`Project: ${index}`) === null) {
+      const newProject = document.createElement("div");
+      newProject.id = `Project: ${index}`;
+      newProject.classList.add("project");
+      newProject.textContent = project.title;
+      projectsContainer.appendChild(newProject);
+
+      const deleteProjectBtn = document.createElement("button");
+      deleteProjectBtn.id = `Project: ${index}`;
+      deleteProjectBtn.textContent = "Delete";
+      deleteProjectBtn.addEventListener("click", deleteProject);
+      newProject.appendChild(deleteProjectBtn);
+    } else return;
   });
 };
 
+appendProjects();
+
 function appendNewProject() {
   const projectTitle = createProjectInput.value;
+  if (projectTitle === "") {
+    return;
+  }
   createProject(`${projectTitle}`);
   appendProjects();
 }
 
 createProjectBtn.addEventListener("click", appendNewProject);
+
+function deleteProject() {
+  alert("Are you sure?");
+}
 
 /////// Test data ///////////
 
