@@ -1,16 +1,12 @@
+/* eslint-disable import/extensions */
+import createProject from "./project.js";
+import createToDo from "./todo-item.js";
+// import saveProject from "./save.js";
+// import { projectHolder } from "./save.js";
+
 let projectHolder = [];
 
-console.log(localStorage);
-
-(function loadData() {
-  const objDeserialized = JSON.parse(localStorage.getItem("Projects"));
-  // if (objDeserialized !== null) {
-  //  projectHolder = objDeserialized;
-  // }
-  console.log(objDeserialized);
-})();
-
-function saveProject(project) {
+export default function saveProject(project) {
   if (projectHolder.includes(project)) {
     projectHolder.splice(projectHolder.indexOf(project), 1, project);
   } else {
@@ -20,66 +16,56 @@ function saveProject(project) {
   localStorage.setItem("Projects", projectHolderSrl);
 }
 
-const createProject = function (title) {
-  const project = {
-    title,
-    array: [],
-    addToDo(toDo) {
-      project.array.push(toDo);
-      saveProject(project);
-    },
-    deleteToDo(toDo) {
-      project.array.splice(project.array.indexOf(toDo));
-      saveProject(project);
-    },
-  };
-  saveProject(project);
-  return project;
-};
+// export default saveProject;
 
-const createToDo = function (name) {
-  const toDo = {
-    name,
-    title: "",
-    completed: false,
-    description: "",
-    dueDate: "",
-    priority: "",
-    checklist: [],
-  };
-  return toDo;
-};
+console.log(localStorage);
 
-/////////// DOM ///////////
-
-const projectsContainer = document.querySelector("#projects-holder");
+(function loadData() {
+  const objDeserialized = JSON.parse(localStorage.getItem("Projects"));
+  projectHolder = objDeserialized;
+  console.log(objDeserialized);
+})();
 
 const createProjectInput = document.querySelector("#proj-name-input");
-
 const createProjectBtn = document.querySelector("#proj-name-submit");
+const projectsContainer = document.querySelector("#projects-holder");
 
 const appendProjects = function () {
-  projectHolder.forEach((project, index) => {
+  projectHolder.forEach((element) => {
     const newProject = document.createElement("div");
-    // projectsContainer.removeChild(newProject);
-    newProject.dataset.key = index;
     newProject.classList.add("project");
-    newProject.textContent = project.title;
     projectsContainer.appendChild(newProject);
   });
 };
 
-function appendNewProject() {
-  const projectTitle = createProjectInput.value;
-  createProject(`${projectTitle}`);
-  appendProjects();
-}
-
-createProjectBtn.addEventListener("click", appendNewProject);
-
-/////// Test data ///////////
+appendProjects();
 
 /*
+
+
+const projectDOM = function () {
+  const createProjectInput = document.querySelector("#proj-name-input");
+  const createProjectBtn = document.querySelector("#proj-name-submit");
+  const projectsContainer = document.querySelector('#projects-holder');
+
+
+
+  
+  const appendProjects = function() {
+    projectHolder.forEach(element => {
+      const project = document.createElement('div');
+      project.classList.add('project');
+      projectsContainer.appendChild(project);
+      
+    });
+
+  }
+
+};
+
+*/
+
+/////// Test data ///////////
 
 const nextWeek = createProject("Next Week");
 const thisWeek = createProject("This Week");
@@ -109,5 +95,3 @@ saveProject(thisWeek);
 saveProject(nextWeek);
 saveProject(thisMonth);
 saveProject(nextMonth);
-
-*/

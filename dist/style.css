@@ -1,0 +1,40 @@
+html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+#content {
+    min-width: 90vw;
+    min-height: 90vh;
+    border: solid 2px black;
+
+}
+
+#projects-holder {
+    display: flex;
+    overflow-x: auto;
+    max-width: 800px;
+}
+
+
+.project{
+    min-height: 400px;
+    min-width: 200px;
+    border: solid black 2px;
+    margin: 25px;
+}
+
+.project-container {
+
+}
+
+.to-do {}
+
+
+
+
+
+

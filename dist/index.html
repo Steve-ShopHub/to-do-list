@@ -4,13 +4,67 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>To Do List</title>
   </head>
   <body>
-    <div id="content"></div>
-    <script type="module" src="projects-holder.js"></script>
-    <script type="module" src="project.js"></script>
-    <script type="module" src="todo-item.js"></script>
-    <script src="main.js"></script>
+    <div id="content">
+      <fieldset>
+        <legend>Create new project</legend>
+        <input
+          id="proj-name-input"
+          type="text"
+          placeholder="Enter project name"
+          name="project"
+        />
+
+        <button id="proj-name-submit" name="project" type="submit">
+          Create New Project
+        </button>
+      </fieldset>
+
+      <div id="projects-holder">
+        <div class="project">
+          <div class="project-title">Project one</div>
+          <div class="list-container">
+            <div class="to-do-item">
+              <div class="title">To Do 1</div>
+              <button class="edit">Edit</button
+              ><button class="delete">Delete</button>
+            </div>
+            <div class="to-do-item">
+              <div class="title">To Do 2</div>
+              <button class="edit">Edit</button
+              ><button class="delete">Delete</button>
+            </div>
+            <div class="to-do-item">
+              <div class="title">To Do 3</div>
+              <button class="edit">Edit</button
+              ><button class="delete">Delete</button>
+            </div>
+            <div class="to-do-item">
+              <div class="title">To Do 4</div>
+              <button class="edit">Edit</button
+              ><button class="delete">Delete</button>
+            </div>
+            <div class="to-do-item">
+              <div class="title">To Do 5</div>
+              <button class="edit">Edit</button
+              ><button class="delete">Delete</button>
+            </div>
+            <div class="to-do-item">
+              <div class="title">To Do 6</div>
+              <button class="edit">Edit</button
+              ><button class="delete">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script type="module" src="./save.js"></script>
+    <script type="module" src="./project.js"></script>
+    <script type="module" src="./todo-item.js"></script> -->
+    <script src="./main.js"></script>
   </body>
 </html>

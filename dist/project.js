@@ -1,27 +1,20 @@
-/*
+import saveProject from "./main.js";
 
-function createProject(title) {
+const createProject = function (title) {
   const project = {
-    title: title,
-    toDOs: [],
-  };
-
-  const logTitle = function () {
-    return console.log(title);
-  };
-
-  return { project, logTitle };
-}
-
-
-*/
-
-/*
-
-    loadFromServer() {
-      const projectTitle = localStorage.getItem(project.title);
-      return projectTitle;
+    title,
+    array: [],
+    addToDo(toDo) {
+      project.array.push(toDo);
+      saveProject(project);
     },
+    deleteToDo(toDo) {
+      project.array.splice(project.array.indexOf(toDo));
+      saveProject(project);
+    },
+  };
+  saveProject(project);
+  return project;
+};
 
-
-*/
+export default createProject;
