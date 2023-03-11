@@ -58,19 +58,51 @@ const createProjectInput = document.querySelector("#proj-name-input");
 
 const createProjectBtn = document.querySelector("#proj-name-submit");
 
+/*
+
+function deleteProject(newProject) {
+  projectHolder.forEach((project, index) => {
+    if (index === this.key) {
+      projectHolder.splice(index, 1);
+      projectsContainer.removeChild(newProject);
+      // appendProjects();
+    }
+  });
+  // let newProject = document.getElementById(this.id);
+  // projectsContainer.removeChild(newProject);
+  // projectHolder.splice(projectHolder.indexOf(project), 1);
+}
+
+*/
+
+function deleteProject(newProject) {
+  projectHolder.forEach((project, index) => {
+    if (index === parseInt(newProject.id)) {
+      projectHolder.splice(index, 1);
+      const projectElement = document.getElementById(newProject.id);
+      projectsContainer.removeChild(projectElement);
+      const projectHolderSrl = JSON.stringify(projectHolder);
+      localStorage.setItem("Projects", projectHolderSrl);
+    }
+  });
+}
+
 const appendProjects = function () {
   projectHolder.forEach((project, index) => {
     if (document.getElementById(`Project: ${index}`) === null) {
       const newProject = document.createElement("div");
-      newProject.id = `Project: ${index}`;
+      newProject.id = index;
       newProject.classList.add("project");
       newProject.textContent = project.title;
       projectsContainer.appendChild(newProject);
 
       const deleteProjectBtn = document.createElement("button");
-      deleteProjectBtn.id = `Project: ${index}`;
+      deleteProjectBtn.dataset.key = index;
       deleteProjectBtn.textContent = "Delete";
-      deleteProjectBtn.addEventListener("click", deleteProject);
+      deleteProjectBtn.addEventListener("click", () => {
+        deleteProject(newProject);
+      });
+
       newProject.appendChild(deleteProjectBtn);
     } else return;
   });
@@ -88,10 +120,6 @@ function appendNewProject() {
 }
 
 createProjectBtn.addEventListener("click", appendNewProject);
-
-function deleteProject() {
-  alert("Are you sure?");
-}
 
 /////// Test data ///////////
 
